@@ -13,11 +13,6 @@ export class ImagesService {
     return this.images;
   }
 
-  // найти одну
-  getById(id: string) {
-    return this.images.find((i) => i.id === id);
-  }
-
   // создать и добавить в базу
   create(imageDto: CreateImageDto) {
     return this.images.push({
@@ -25,4 +20,9 @@ export class ImagesService {
       id: Date.now().toString(),
     });
   }
+
+  // найти одну
+  //   getById(id: string) {
+  //     return this.images.find((i) => i.id === id);
+  //   }
 }

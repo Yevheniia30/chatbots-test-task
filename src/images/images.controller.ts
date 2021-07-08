@@ -29,65 +29,49 @@ import { ImagesService } from './images.service';
 @Controller('images')
 export class ImagesController {
   constructor(private imagesService: ImagesService) {}
-  // all
-  // @Get()
-  // // ПРИМЕР
-  // // редирект на какой-то урл
-  // // @Redirect('https://google.com', 301)
-  // getAll(@Req() req: Request, @Res() res: Response) {
-  //   // экспрессовский response
-  //   res.status(201).json({
-  //     status: 'success',
-  //     code: 201,
-  //     message: 'Getting images sucessful',
-  //   });
-  // }
 
-  // all
-  @Get()
+  // ------------------- РОУТЫ ДЛЯ ТЗ!!!!------------------
+  @Post('upload/dog/image')
+  @HttpCode(HttpStatus.CREATED)
+  createDog(@Body() createImageDto: CreateImageDto) {
+    return this.imagesService.create(createImageDto);
+  }
+
+  @Get('list/dog/images')
+  @HttpCode(HttpStatus.OK)
   getAll() {
     return this.imagesService.getAll();
   }
 
+  // ---------------ПРИМЕРЫ----------------
   // one by id
-  @Get(':id')
-  getOne(@Param('id') id: string) {
-    return this.imagesService.getById(id);
-  }
+  // @Get(':id')
+  // getOne(@Param('id') id: string) {
+  //   return this.imagesService.getById(id);
+  // }
 
   // create one (send body create dto)
-  @Post()
+  // @Post()
   // показать статус (статусы это енамы)
-  @HttpCode(HttpStatus.CREATED)
+  // @HttpCode(HttpStatus.CREATED)
   // показать хедеры
-  @Header('Cache-Control', 'none')
-  create(@Body() createImageDto: CreateImageDto) {
-    return this.imagesService.create(createImageDto);
-  }
+  // @Header('Cache-Control', 'none')
+  // create(@Body() createImageDto: CreateImageDto) {
+  //   return this.imagesService.create(createImageDto);
+  // }
 
   // delete one
-  @Delete(':id')
-  remove(@Param('id') id: string): string {
-    return 'remove' + id;
-  }
+  // @Delete(':id')
+  // remove(@Param('id') id: string): string {
+  //   return 'remove' + id;
+  // }
 
   // update one (send body create dto)
-  @Put(':id')
-  update(
-    @Body() updateImageDto: UpdateImageDto,
-    @Param('id') id: string,
-  ): string {
-    return `Title: ${updateImageDto.title} Url: ${updateImageDto.url} ${id}`;
-  }
-
-  // ------------------- РОУТЫ ДЛЯ ТЗ!!!!------------------
-  @Post('upload/dog/image')
-  createDog(): string {
-    return 'createDog';
-  }
-
-  @Get('list/dog/images')
-  getAllDogs(): string {
-    return 'getAllDogs';
-  }
+  // @Put(':id')
+  // update(
+  //   @Body() updateImageDto: UpdateImageDto,
+  //   @Param('id') id: string,
+  // ): string {
+  //   return `Title: ${updateImageDto.title} Url: ${updateImageDto.url} ${id}`;
+  // }
 }
