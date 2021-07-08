@@ -1,6 +1,6 @@
 // class
 
-export class CreateImageDto {
+export class UpdateImageDto {
   readonly title: string;
   readonly url: string;
 }
