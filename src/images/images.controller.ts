@@ -17,6 +17,7 @@ import {
 } from '@nestjs/common';
 import { CreateImageDto } from './dto/create-image.dto';
 import { ImagesService } from './images.service';
+import { Image } from './schemas/image.schema';
 
 // import { Request, Response } from 'express';
 // import { UpdateImageDto } from './dto/update-image.dto';
@@ -34,13 +35,13 @@ export class ImagesController {
   // ------------------- РОУТЫ ДЛЯ ТЗ!!!!------------------
   @Post('upload/dog/image')
   @HttpCode(HttpStatus.CREATED)
-  createDog(@Body() createImageDto: CreateImageDto) {
+  createDog(@Body() createImageDto: CreateImageDto): Promise<Image> {
     return this.imagesService.create(createImageDto);
   }
 
   @Get('list/dog/images')
   @HttpCode(HttpStatus.OK)
-  getAll() {
+  getAll(): Promise<Image[]> {
     return this.imagesService.getAll();
   }
 
