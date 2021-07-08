@@ -1,14 +1,22 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 
+import 'dotenv/config';
+
+const uriDb = process.env.URI_DB;
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ImagesModule } from './images/images.module';
-// import { ImagesController } from './images/images.controller';
-// import { ImagesService } from './images/images.service';
 
 @Module({
-  imports: [ImagesModule, MongooseModule.forRoot('mongodb://localhost/nest')],
+  imports: [
+    ImagesModule,
+    // MongooseModule.forRoot(
+    //   'mongodb+srv://yevheniia30:yevheniia30@cluster0.tmjew.mongodb.net/images?retryWrites=true&w=majority',
+    // ),
+    MongooseModule.forRoot(uriDb),
+  ],
   controllers: [AppController],
   providers: [AppService],
 })

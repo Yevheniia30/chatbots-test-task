@@ -3,22 +3,23 @@
 import {
   Controller,
   Get,
-  Param,
   Body,
-  Delete,
-  Put,
-  // Redirect,
   Post,
   HttpStatus,
   HttpCode,
-  Header,
-  Req,
-  Res,
+  // Param,
+  // Delete,
+  // Put,
+  // Redirect,
+  // Header,
+  // Req,
+  // Res,
 } from '@nestjs/common';
-import { Request, Response } from 'express';
 import { CreateImageDto } from './dto/create-image.dto';
-import { UpdateImageDto } from './dto/update-image.dto';
 import { ImagesService } from './images.service';
+
+// import { Request, Response } from 'express';
+// import { UpdateImageDto } from './dto/update-image.dto';
 
 // express
 // app.use((req, res, next) => {
